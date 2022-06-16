@@ -1,15 +1,26 @@
 import { ArrowDropDown, NotificationImportant, Search } from '@material-ui/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import './navbar.scss';
 
 
 function Navbar() {
+
+  const [isScrolled, setIsScrolled] = useState(false)
+
+window.onscroll = () => {
+  setIsScrolled(window.pageYOffset === 0 ? false : true);
+  return () => ( window.onscroll = null );
+}
+
+console.log(isScrolled);
+
   return (
-    <div className='navbar'>
+    
+    <div className={ isScrolled ? "navbar scrolled " : "navbar"}>
       <div className="container">
         <div className="left">
           <img
-            src='https://thumbs.dreamstime.com/b/vecteur-de-logo-netflix-illustration-isol%C3%A9e-sur-le-fond-noir-fichier-modifiable-env-disponible-193529581.jpg'
+            src='https://cdn.futura-sciences.com/buildsv6/images/wide1920/0/3/0/030dc01da7_50145928_netflix-logo.jpg'
             alt=''
           />
           <span>Homepage</span>
@@ -22,7 +33,7 @@ function Navbar() {
           <Search className='icon'/>
           <span className='icon'>KID</span>
           <NotificationImportant className='icon'/>
-          <img src="https://media.istockphoto.com/photos/colored-powder-explosion-on-black-background-picture-id1140180560?k=20&m=1140180560&s=612x612&w=0&h=X_400OQDFQGqccORnKt2PHYvTZ3dBLeEnCH_hRiUQrY=" alt="" />
+          <img src="https://s7d1.scene7.com/is/image/kyndryl/atwork_Youngwomanwatchingtablet_1x1?qlt=85&wid=1024&ts=1652131435079&dpr=off" alt="" />
           <div className="profile">
             <ArrowDropDown className='icon'/>
             <div className="options">
