@@ -20,14 +20,14 @@ console.log(isScrolled);
       <div className="container">
         <div className="left">
           <img
-            src='https://cdn.futura-sciences.com/buildsv6/images/wide1920/0/3/0/030dc01da7_50145928_netflix-logo.jpg'
+            src='http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png'
             alt=''
           />
-          <span>Homepage</span>
+          <span>Accueil</span>
           <span>Series</span>
-          <span>Movies</span>
-          <span>New and popular</span>
-          <span>My List</span>
+          <span>Films</span>
+          <span>Nouveau et populaire</span>
+          <span>Ma Liste</span>
         </div>
         <div className="right">
           <Search className='icon'/>

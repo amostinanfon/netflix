@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     z-index: 999;
-    background-color: linear-gradient(to top, transparent 0%, rbg(0,0,0,0.3) 70%);
+    background-color: linear-gradient(to top, transparent 0%, rbg(0,0,0,0.5) 70%);
 
     &.scrolled{
         background-color: var(--main-color);
@@ -16,14 +16,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 70px;
+        height: 60px;
 
         .left {
             display: flex;
             align-items: center; 
-        }
         img{
-            height: 50px;
+            height: 100px;
             margin-right: 20px;
         }
 
@@ -31,6 +30,7 @@
             margin-right: 20px;
             cursor: pointer;
         }
+    }
 
         .right {
             display: flex;
@@ -40,32 +40,31 @@
                 margin: 10px;
                 cursor: pointer;
             }  
-        }
-
-        img{
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .profile{
-            .options{
-                display: none;
-                background-color: var(--main-color);
+            img{
+                width: 30px;
+                height: 30px;
                 border-radius: 5px;
+                object-fit: cover;
+                cursor: pointer;
             }
 
-            span {
-                padding: 7px;
-            }
-
-            &:hover{
+            .profile{
                 .options{
-                    display: flex;
-                    flex-direction: column;
-                    position: absolute;
+                    display: none;
+                    background-color: var(--main-color);
+                    border-radius: 5px;
+                }
+    
+                span {
+                    padding: 7px;
+                }
+    
+                &:hover{
+                    .options{
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                    }
                 }
             }
         }
