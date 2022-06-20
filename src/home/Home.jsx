@@ -9,10 +9,10 @@ function Home() {
     <div className="home">
       <Navbar/>
       <Featured type="movie"/>
-      <List />
-      <List />
-      <List />
-      <List />
+      <List/>
+      <List/>
+      <List/>
+      <List/>
     </div>
   )
 }
