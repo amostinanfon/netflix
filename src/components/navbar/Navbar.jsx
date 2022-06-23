@@ -1,6 +1,7 @@
 import { ArrowDropDown, NotificationImportant, Search } from '@material-ui/icons';
 import React, { useState } from 'react';
 import './navbar.scss';
+import { Link } from 'react-router-dom'
 
 
 function Navbar() {
@@ -23,11 +24,21 @@ console.log(isScrolled);
             src='http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png'
             alt=''
           />
-          <span>Accueil</span>
-          <span>Series</span>
-          <span>Films</span>
-          <span>Nouveau et populaire</span>
-          <span>Ma Liste</span>
+            <Link to="/" className="link">
+              <span>Accueil</span>
+            </Link>
+            <Link to="/series" className="link">
+              <span>Series</span>
+            </Link>
+            <Link to="/movies" className="link">
+              <span>Movies</span>
+            </Link>
+            <Link to="/series" className="link">
+              <span>Ma Liste</span>
+            </Link>
+            <Link to="/series" className="link">
+              <span>Nouveau et populaire</span>
+            </Link>
         </div>
         <div className="right">
           <Search className='icon'/>

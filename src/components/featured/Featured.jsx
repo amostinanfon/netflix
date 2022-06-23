@@ -4,14 +4,14 @@ import "./featured.scss";
 
 
 
-function featured({type}) {
+function Featured({type}) {
   return (
     <div>
         <div className='featured'>
             {type && (
                 <div className="category">
                     <span>
-                        {type === "movie" ? "Movies" : "Series"}
+                        {type === "movies" ? "Movies" : "Series"}
                         <select name="genre" id="genre">
                             <option>Genre</option>
                             <option value="adventure">adventure</option>
@@ -62,4 +62,4 @@ Lorem enim qui magna consequat consectetur laborum. Ad ut nostrud veniam non iru
   )
 }
 
-export default featured
+export default Featured
