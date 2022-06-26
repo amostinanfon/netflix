@@ -1,12 +1,34 @@
 import { Add, PlayArrow, ThumbDownAltOutlined, ThumbUpAltOutlined } from "@material-ui/icons";
-import { useState } from "react";
-import "./listItem.scss";;
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./listItem.scss";
 
 
 
-function ListItem({index}) {
+function ListItem({index, item}) {
 
   const [isHovered, setIsHovered] = useState(false);
+  const [movie, setMovie] = useState({});
+
+
+  useEffect(() => {
+    const getMovie = async () => {
+      try {
+      const res = await axios.get("/movies/find/"+ item, {
+          headers: {
+            token :
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjQxNDBiM2U5NTk3MGMwMDgwZWFjMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTk5Mzc1NiwiZXhwIjoyNTE5OTkzNzU2fQ.6AMdUux3LDgvMDUNOgcFdYHV3KxcCr_ro2mf3fYZo78"
+          }
+        });
+        setMovie(res.data);
+      } catch(err) {
+      console.log(err)
+    }
+  };
+  getMovie();
+}, [item])
+  
+
 
   return (
     <div className="listItem"
@@ -14,18 +36,19 @@ function ListItem({index}) {
           onMouseEnter={()=>setIsHovered(true)}
           onMouseLeave={()=>setIsHovered(false)}
     >
-        <img src="https://www.tomsguide.fr/content/uploads/sites/2/2018/05/mcu-02.jpg" alt="" />
+        <img src={movie.img} alt="" />
         
         {
           isHovered && (
         <>
             <video
-              // muted
+              src="/video/Neon.mp4"
               autoPlay
-              loop
-              src="/video/Neon street figure lighting night video _ motion green screen _ music background.mp4"    
-            
+              loop={true}
+              progress
+              controls
             />
+            {/* <ReactPlayer url={item.video} style={{height:"100%" , width:"100%"}}/> */}
             <div className="itemInfo">
               <div className="icons">
                 <PlayArrow className="icon" />
@@ -34,15 +57,15 @@ function ListItem({index}) {
                 <ThumbDownAltOutlined className="icon"/>
               </div>
               <div className="itemInfoTop">
-                <span>1 hour 14 mins</span>
-                <span className="limit">+16</span>
-                <span>1999</span>
+                <span>{movie.duration}</span>
+                <span className="limit">{movie.limit}</span>
+                <span>{movie.year}</span>
               </div>
               <div className="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quidem modi commodi ipsam blanditiis ratione inventore .
+                {movie.desc}
               </div>
               <div className="genre">
-                Action
+                {movie.genre}
               </div>
             </div>
         </>

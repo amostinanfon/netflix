@@ -1,4 +1,5 @@
 import { ArrowBackOutlined } from '@material-ui/icons';
+import ReactPlayer from 'react-player';
 import './watch.scss';
 
 
@@ -10,10 +11,20 @@ function Watch() {
             <ArrowBackOutlined />
             Home
         </div>
-        <video 
+        {/* <video 
             className="video" 
-            src="/video/Neon street figure lighting night video _ motion green screen _ music background.mp4"
+            src="/video/Neon.mp4"
+            //url='https://www.youtube.com/watch?v=iLS2DPWSJ78'
             autoPlay 
+            progress
+            controls
+        /> */}
+        <ReactPlayer
+        
+        className="video" 
+            url="https://www.youtube.com/watch?v=iLS2DPWSJ78"
+            autoPlay
+            loop
             progress
             controls
         />
