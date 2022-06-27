@@ -1,33 +1,27 @@
 import { ArrowBackOutlined } from '@material-ui/icons';
-import ReactPlayer from 'react-player';
+import { useLocation } from 'react-router';
 import './watch.scss';
 
 
 
 function Watch() {
+
+  const location = useLocation();
+  const movie = location.state.movie
   return (
     <div className='watch'>
         <div className="back">
             <ArrowBackOutlined />
             Home
         </div>
-        {/* <video 
+        <video 
             className="video" 
-            src="/video/Neon.mp4"
+            src={movie.video}
             //url='https://www.youtube.com/watch?v=iLS2DPWSJ78'
-            autoPlay 
-            progress
-            controls
-        /> */}
-        <ReactPlayer
-        
-        className="video" 
-            url="https://www.youtube.com/watch?v=iLS2DPWSJ78"
             autoPlay
-            loop
-            progress
             controls
         />
+        
     </div>
   )
 }

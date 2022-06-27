@@ -8,8 +8,7 @@ function List({list}) {
   const listRef = useRef()
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
-
-  console.log(list);
+  
 
 const handleClick = (direction) => {
   setIsMoved(true);
@@ -34,8 +33,8 @@ const handleClick = (direction) => {
       <div className="wrapper">
         <ArrowBackIosOutlined className='sliderArrow left' onClick={() => handleClick("left")} style={{display: !isMoved && "none"}}/>
         <div className="container" ref={listRef}>
-          { list.content.map((item, i) => (
-              <ListItem index={i} item={item}/>
+          { list.content.map((item, index) => (
+              <ListItem key={index} item={item}/>
             ))
           }
         </div>
