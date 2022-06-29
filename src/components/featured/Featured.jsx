@@ -1,10 +1,32 @@
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
-import React from 'react';
+import axios from 'axios';
+import React, { useState , useEffect} from 'react';
 import "./featured.scss";
 
 
 
 function Featured({type}) {
+
+    const [content, setContent] = useState({});
+
+    useEffect(() => {
+        const getList = async () =>{
+            try {
+                const res = await axios.get(`/movies/?type=${type}`,
+                    {
+                        headers:{
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjQxNDBiM2U5NTk3MGMwMDgwZWFjMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTk5Mzc1NiwiZXhwIjoyNTE5OTkzNzU2fQ.6AMdUux3LDgvMDUNOgcFdYHV3KxcCr_ro2mf3fYZo78"
+                        }
+                    }
+                )
+                setContent(res.data[0]);
+            } catch(err) {
+                console.log(err);
+            }
+        };
+        getList();
+    },[type])
+
   return (
     <div>
         <div className='featured'>
@@ -32,20 +54,17 @@ function Featured({type}) {
                 </div>
             )}
             <img 
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src={content.img} 
                 alt=''
             />
             <div className='info'>
                 <img
-                    src='https://occ-0-1722-1723.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABfFZZzuu1pnfxv9XzQl6tcNXEKxQ2s42uG4eNLpTHb_vQulAwx1W_SN7zegXRRNCE_-TE8QLaFONjD5wgjvJnPr1TMedsS-VglMBIxI1dU8Q.png?r=218'
+                    src={content.img}
                     alt=''
                 />
                 <span className='desc'>
-
- Commodo sint aliqua ea aute dolore amet magna officia dolor. Aute tempor esse sunt et. Duis exercitation fugiat nulla eiusmod. Mollit proident non in Lorem ut laboris occaecat.
-
-Lorem enim qui magna consequat consectetur laborum. Ad ut nostrud veniam non irure et sunt Lorem. Deserunt reprehenderit magna nulla nisi eu fugiat. Ad eiusmod in elit do duis consectetur laboris ut et.
-            </span>
+                    {content.desc}
+                </span>
             <div className='buttons'>
                 <button className="play">
                     <PlayArrow />
